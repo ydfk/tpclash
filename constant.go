@@ -33,6 +33,10 @@ const (
 )
 
 const (
+	mixedPortPatch = `# TPClash Common Config AutoFix
+mixed-port: 7890
+`
+
 	bindAddressPatch = `# TPClash Common Config AutoFix
 bind-address: '*'
 `

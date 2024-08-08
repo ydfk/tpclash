@@ -391,6 +391,13 @@ func autoFix(c string) string {
 		return c
 	}
 
+	var mixedPortNode yaml.Node
+	_ = yaml.Unmarshal([]byte(tplRendering(mixedPortPatch)), &mixedPortNode)
+	if !setYamlNode(&rootNode, "mixed-port", mixedPortNode.Content[0]) {
+		logrus.Error("[autofix] failed to patch mixed-port config")
+		return c
+	}
+
 	var bindAddressNode yaml.Node
 	_ = yaml.Unmarshal([]byte(tplRendering(bindAddressPatch)), &bindAddressNode)
 	if !setYamlNode(&rootNode, "bind-address", bindAddressNode.Content[0]) {
